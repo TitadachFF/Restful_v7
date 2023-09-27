@@ -40,12 +40,15 @@ CREATE TABLE `restaurants` (
 -- Dumping data for table `restaurants`
 --
 
-INSERT INTO `restaurants` (`id`, `name`, `type`, `imageurl`) VALUES
-(1, 'McDonald (แมคโดนัลด์)', 'แฮมเบอร์เกอร์, ไก่ทอด, ฟาสต์ฟู้ด', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/AWh64KYIZXYdMpch2Zem/hero/f193b34375f84a0fb1b2b58e4320be3f_1688317413588921068.webp'),
-(2, 'Pizza Hut (พิซซ่าฮัท)', 'Coupon, พิซซ่า', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-CYTDJNKYC6X2JT/hero/1bf86d6f3bb14bcc84a0bbc1cb6a2968_1687332447386762578.webp'),
-(3, 'ข้าวทิพย์ แอนด์ เฮลท์ฟู้ด', 'Coupon, อาหารสุขภาพ', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C3TZUADTJU5VNA/hero/Optimized_449f6cec2b5b444488b3c2ef1a801630_1661688071012760036.webp'),
-(4, 'Coffee Beans by Dao (คอฟฟี่บีน บาย ดาว)', 'Coupon, อาหารตามสั่ง, Rice noodles', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/THGFIST000006ph/hero/3392da742ed241f1b85ef2da1dba4af4_1688459345723695498.webp'),
-(5, 'ไอฟราย Snack', 'ของทอด', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C3BWRE2TKAUYLJ/hero/7f32731c622c40289f95a93a5f039dfb_1643613789315777578.webp');
+INSERT INTO restaurants ("id", "name", "type", "img", "createdAt", "updatedAt")VALUES
+(1, 'รสเด็ดอร่อยตามสั่ง - บางซื่อ', 'Coupon, อาหารทะเล, อาหารตามสั่ง, ยำ', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C2N2EY6FTXTHKA/hero/6709b61f83504e22a8b1f5a2ea5851e1_1623751631792385157.webp', '2023-08-29', '2023-08-29'),
+(2, 'ขนมจีนข้ามศาล - จรัญสนิทวงศ์46', 'Coupon, อาหารสุขภาพ', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C2VEAVLTA3TET2/hero/3a459d92-b269-4b4f-8671-00e31e8c85e5__store_cover__2023__03__23__08__06__53.webp','2023-08-29','2023-08-29'),
+(3, 'สเต็กกินกับ อาหารคลีน เซ็นจูรี่ - ถนนรางน้ำ', 'อาหารสุขภาพ', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C3JDNAJ1N7ADRN/hero/26bcead9875e485f901170de92d6fd29_1650360117698875230.webp', '2023-08-29', '2023-08-29'),
+(4, 'สเต็กกินกับ อาหารคลีน เซ็นจูรี่ - ถนนรางน้ำ', 'Fastfoods', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C3JDNAJ1N7ADRN/hero/26bcead9875e485f901170de92d6fd29_1650360117698875230.webp', '2023-07-19', '2023-07-19'),
+(5, 'ช.กุ้งเผา วงเวียนใหญ่ - ธนบุรี', 'Coupon, อาหารสุขภาพ, น้ำผลไม้/สมูทตี้, ทานเล่น/ขนมขบเคี้ยว', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C2NVKB4XGFAUET/hero/d586f9307c9d41f5a508225382f67cd0_1662939858900012103.webp', '2023-08-28', '2023-08-28'),
+(6, 'Wine Connection - สุขุมวิท', 'เบรคฟาสต์/บรั๊นช์,แฮมเบอร์เกอร์,สเต็ก', 'https://d1sag4ddilekf6.cloudfront.net/compressed_webp/merchants/3-C2XVN35ER8BXRE/hero/8774d602a3044150a5704300e060285e_1630124806505894238.webp', '2023-08-28', '2023-08-28');
+
+
 
 --
 -- Indexes for dumped tables
