@@ -32,4 +32,16 @@ const Restaurant = sequelize.define("restaurant", {
         defaultValue: DataTypes.NOW
     }
 });
+
+//Synchronize database
+Restaurant.sync({
+        force: true
+    })
+    .then(() => {
+        console.log("Table created or already exists");
+    })
+    .catch((error) => {
+        console.error("error creating table:", error);
+    })
+    
 module.exports = Restaurant;

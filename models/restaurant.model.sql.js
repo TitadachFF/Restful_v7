@@ -112,4 +112,5 @@ Restaurant.deleteById = (restaurantId, result) => {
 
 
 
+
 module.exports = Restaurant
