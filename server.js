@@ -40,6 +40,7 @@ app.get("/", (req,res)=>{
     res.send("<h1>Hello</h1>");
 })
 app.use("/",restaurantRouter)
+require("./routes/auth.router")(app);
 
 app.listen(PORT, ()=>{
     console.log("Server is running on http://localhost:"+PORT)
