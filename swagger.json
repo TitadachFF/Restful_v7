@@ -1,0 +1,186 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Grab Restaurant API",
+        "description": "All RESTful API Endpoint for Grab Restaurant",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/auth/signin": {
+            "post": {
+                "tags": ["Authentication"],
+                "description": "Sign in to Grab Restaurant",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successfully signed in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "accessToken": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "id": 3,
+                                        "username": "username",
+                                        "email": "email@webmail.npru.ac.th",
+                                        "roles": ["ROLES_MODERATOR", "ROLES_ADMIN"],
+                                        "accessToken": "eyJhbGc....S_2b42-zD4"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/signup": {
+            "post": {
+                "tags": ["Authentication"],
+                "description": "Sign in to Grab Restaurant",
+                "parameters": [{
+                    "name": "body",
+                    "in": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "username": {
+                                "type": "string"
+                            },
+                            "password": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successfully signed in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "username": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "roles": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "accessToken": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "example": {
+                                        "id": 3,
+                                        "username": "username",
+                                        "email": "email@webmail.npru.ac.th",
+                                        "roles": ["ROLES_MODERATOR", "ROLES_ADMIN"],
+                                        "accessToken": "eyJhbGc....S_2b42-zD4"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/restaurants": {
+            "get": {
+                "tags": ["Restaurant"]
+            },
+            "post": {
+                "tags": ["Restaurant"]
+            }
+        },
+        "/restaurants/{id}": {
+            "get": {
+                "tags": ["Restaurant"],
+                "description": "Get Restaurant by ID",
+                "parameters": [{
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Successfully get restaurant by Id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "imageurl": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Restaurant"]
+            },
+            "delete": {
+                "tags": ["Restaurant"]
+            }
+        }
+    }
+}
