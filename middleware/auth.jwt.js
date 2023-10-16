@@ -53,7 +53,7 @@ isModerator = (req, res, next) => {
 
 };
 isModeratorOrAdmin = (req, res, next) => {
-    //SELET * FROM user WHERE id = req,userId
+    //SELECT * FROM user WHERE id = req,userId
     User, findByPk(req.userId).then(user => {
         //SELECT * FROM role, users, user_roles WHERE user.id = user_roles.userId and role.id = users_roles.roleId
         user.getRoles().then(roles => {
