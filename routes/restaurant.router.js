@@ -28,7 +28,7 @@ router.get("/restaurants", async (req, res) => {
 });
 
 //Get Restaurant by ID
-router.get("/restaurants/:id",[authJwt.verifyToken] async (req, res) => {
+router.get("/restaurants/:id",[authJwt.verifyToken], async (req, res) => {
   try {
     const restaurantId = req.params.id;
     const restaurant = await Restaurant.getById(restaurantId);
