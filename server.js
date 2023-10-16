@@ -30,7 +30,7 @@ function initial() {
 
 }
 
-//creat service
+//create service
 const app = express();
 
 //use middleware

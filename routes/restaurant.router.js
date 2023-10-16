@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Restaurant = require("../controllers/restaurant.controller");
-const { restart } = require("nodemon");
 const { authJwt } = require("../middleware");
 
 ///create a new restaurant
@@ -28,16 +27,16 @@ router.get("/restaurants", async (req, res) => {
 });
 
 //Get Restaurant by ID
-router.get("/restaurants/:id",[authJwt.verifyToken], async (req, res) => {
+router.get("/restaurants/:id",[authJwt.verifyToken], async(req, res)=>{
   try {
-    const restaurantId = req.params.id;
-    const restaurant = await Restaurant.getById(restaurantId);
-    res.json(restaurant);
+      const restaurantId = req.params.id;
+      const restaurant = await Restaurant.getById(restaurantId);
+      console.log(restaurant.dataValues);
+      res.status(200).json(restaurant)
   } catch (error) {
-    res.status(500).json({ error: "Failed to get restaurant by id" });
+      res.status(500).json({error:"failed to get restaurant by id"});
   }
-});
-
+})
 //Restaurant  Update  a Restaurant data
 router.put("/restaurants/:id", async (req, res) => {
   try {
