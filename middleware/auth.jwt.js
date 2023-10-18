@@ -1,77 +1,86 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config");
 const db = require("../models");
-const verifySignUp = require("./verifySignUp");
 const User = db.user;
+const {TokenExpiredError} = jwt;
+
+const catchError = (err,res) =>{
+    if(err instanceof TokenExpiredError){
+        return res.status(401).send({message:"Unautohrized! Access Token was expired"})
+    }
+return res.status(401).send({message:"Unauthorized!"})
+};
 
 verifyToken = (req, res, next) => {
     let token = req.headers['x-access-token'];
     if (!token) {
-        return res.status(403).send({ message: " no token provided!" });
+        return res.status(403).send({ message: "No token provided!" });
+
     }
     jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
-            return res.status(401).send({
-                message: "Unauthorized!",
-            });
-        }
+            return catchError(err,res);
+            }
         req.userId = decoded.id;
         next();
     });
 };
 isAdmin = (req, res, next) => {
-    //SELET * FROM user WHERE id = req,userId
-    User, findByPk(req.userId).then(user => {
-        //SELECT * FROM role, users, user_roles WHERE user.id = user_roles.userId and role.id = users_roles.roleId
+    //Select * FROM user WHERE id = req.userId
+    User.findByPK(req.userId), then(user => {
+        //Select * FROM role, user, user_roles WHERE user.id = user_roles.userId and role.id = user_roles.roleId
         user.getRoles().then(roles => {
-            for (let i = 0; i < roles.lenght; i++) {
+            for (let i = 0; i < roles.length; i++) {
                 if (roles[i].name === "admin") {
                     next()
                     return;
                 }
             }
-            res.status(403).send({ message: "Require Admin Role!" })
+            res.status(403).send({ message: "Require Admin Role!" });
+            return;
         });
-        return;
     });
 };
-isModerator = (req, res, next) => {
-    //SELET * FROM user WHERE id = req,userId
-    User, findByPk(req.userId).then(user => {
-        //SELECT * FROM role, users, user_roles WHERE user.id = user_roles.userId and role.id = users_roles.roleId
-        user.getRoles().then(roles => {
-            for (let i = 0; i < roles.lenght; i++) {
-                if (roles[i].name === "moderator") {
-                    next()
-                    return;
-                }
-            }
-            res.status(403).send({ message: "Require Moderator Role!" })
-        });
-        return;
-    });
 
-};
-isModeratorOrAdmin = (req, res, next) => {
-    //SELECT * FROM user WHERE id = req,userId
-    User, findByPk(req.userId).then(user => {
-        //SELECT * FROM role, users, user_roles WHERE user.id = user_roles.userId and role.id = users_roles.roleId
+isModerator = (req, res, next) => {
+    //Select * FROM user WHERE id = req.userId
+    User.findByPK(req.userId), then(user => {
+        //Select * FROM role, user, user_roles WHERE user.id = user_roles.userId and role.id = user_roles.roleId
         user.getRoles().then(roles => {
-            for (let i = 0; i < roles.lenght; i++) {
-                if (roles[i].name === "admin") {
-                    next()
-                    return;
-                }
+            for (let i = 0; i < roles.length; i++) {
                 if (roles[i].name === "moderator") {
                     next()
                     return;
                 }
             }
-            res.status(403).send({ message: "Require Moderator Role!" })
+            res.status(403).send({ message: "Require Moderator Role!" });
+            return;
         });
-        return;
     });
 };
+
+isModeratorOrAdmin = (req, res, next) => {
+    //Select * FROM user WHERE id = req.userId
+    User.findByPK(req.userId), then(user => {
+        //Select * FROM role, user, user_roles WHERE user.id = user_roles.userId and role.id = user_roles.roleId
+        user.getRoles().then(roles => {
+            for (let i = 0; i < roles.length; i++) {
+                if (roles[i].name === "moderator") {
+                    next()
+                    return;
+                }
+                if (roles[i].name === "admin") {
+                    next()
+                    return;
+                }
+            }
+            res.status(403).send({ message: "Require Moderator Role!" });
+            return;
+        });
+    });
+};
+
+
 const authJwt = {
     verifyToken: verifyToken,
     isAdmin: isAdmin,
