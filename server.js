@@ -8,11 +8,11 @@ const restaurantRouter = require("./routes/restaurant.router")
 const db = require("./models/index");
 const role = db.role;
 //dev mode
-db.sequelize.sync({force:true}).then(()=>{
-    console.log('Drop and re-sync DB');
-    initial();
+// db.sequelize.sync({force:true}).then(()=>{
+//     console.log('Drop and re-sync DB');
+//     initial();
 
-});
+// });
 
 function initial() {
     role.create({
